@@ -1,0 +1,116 @@
+/* Custom scrollbar and utilities */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.4);
+    border-radius: 20px;
+}
+html.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(71, 85, 105, 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.view-section {
+    display: none;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.view-section.active {
+    display: block;
+}
+
+/* Components */
+.nav-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn.active {
+    background-color: #f0fdfa; /* primary-50 */
+    color: #0d9488; /* primary-600 */
+}
+
+html.dark .nav-btn.active {
+    background-color: rgba(20, 184, 166, 0.1);
+    color: #14b8a6;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background-color: #14b8a6; /* primary-500 */
+    border-radius: 0 4px 4px 0;
+    transition: height 0.3s ease;
+}
+
+.nav-btn.active::before {
+    height: 60%;
+}
+
+/* Buttons ported to inline tailwindcss */
+
+/* Modal Open state classes */
+.modal-open {
+    display: flex !important;
+}
+
+.modal-open > div {
+    transform: scale(1) !important;
+}
+
+/* Glass effect for student cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+html.dark .glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Stat Cards hover effect */
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+html.dark .stat-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+}
+
+/* Toasts ported to inline tailwindcss */
+
+.toast-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Attendance Status Buttons */
+.status-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.status-btn.selected {
+    transform: scale(1.05);
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
+}
